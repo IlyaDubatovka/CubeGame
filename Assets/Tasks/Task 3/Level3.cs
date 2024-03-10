@@ -8,7 +8,7 @@ public class Level3 : MonoBehaviour
     {
         var step = Time.deltaTime * _speed;
         var transformPosition = transform.position;
-        transformPosition.x += step;
+        transformPosition.x -= step;
 
         transform.position = transformPosition; 
     }
