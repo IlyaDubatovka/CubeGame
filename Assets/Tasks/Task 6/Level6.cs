@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Level6 : MonoBehaviour
@@ -6,10 +7,12 @@ public class Level6 : MonoBehaviour
     private GameObject _obstacle;
     
     private float _speed = 5;
+    private Rigidbody oRigidbody;
 
     private void Start()
     {
-        Instantiate(_obstacle);
+        _obstacle = Instantiate(_obstacle, Vector3.zero, Quaternion.identity);
+        oRigidbody = _obstacle.GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -17,7 +20,13 @@ public class Level6 : MonoBehaviour
         var step = Time.deltaTime * _speed;
         var transformPosition = transform.position;
         transformPosition.x += step;
+        
 
         transform.position = transformPosition; 
+    }
+
+    private void FixedUpdate()
+    {
+        oRigidbody.AddForce(0,10000,0);
     }
 }
